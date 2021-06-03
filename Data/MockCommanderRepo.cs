@@ -6,7 +6,7 @@ namespace Csharp_REST_API.Data
     public class MockCommanderRepo : ICommanderRepo
     {
         public IEnumerable<Command> GetAppCommands()
-        {
+        { 
             var commands = new List<Command>
             {
                 new Command {Id = 0, HowTo = "Do something", Line = "something", Platform = "something else"},
