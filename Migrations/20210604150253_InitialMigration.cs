@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Csharp_REST_API.Migrations
+namespace Csharp_REST_API.Migrations 
 {
-    public partial class InitialMigratio : Migration
+    public partial class InitialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,9 +12,9 @@ namespace Csharp_REST_API.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    HowTo = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Line = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Platform = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    HowTo = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
+                    Line = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Platform = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
