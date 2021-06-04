@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -29,6 +30,10 @@ namespace Csharp_REST_API
         {
 
             services.AddControllers();
+            
+            services.AddDbContext<CommanderContext>(opt => 
+                opt.UseSqlServer(Configuration.GetConnectionString("CommanderConnection")));
+            
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Csharp_REST_API", Version = "v1" });
