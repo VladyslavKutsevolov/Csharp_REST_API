@@ -37,5 +37,10 @@ namespace Csharp_REST_API.Data
 
             _context.Commands.Add(cmd);
         }
+
+        public void UpdateCommand(Command cmd)
+        {
+           // nothing 
+        }
     }
 }
