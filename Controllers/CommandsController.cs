@@ -4,6 +4,7 @@ using AutoMapper;
 using Csharp_REST_API.Data;
 using Csharp_REST_API.Dtos;
 using Csharp_REST_API.Models;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Csharp_REST_API.Controllers
@@ -76,7 +77,33 @@ namespace Csharp_REST_API.Controllers
             return NoContent();
 
         }
-        
+
+
+        [HttpPatch("{id}")]
+        public ActionResult PartialCommandUpdate(int id, JsonPatchDocument<CommandUpdateDto> patchDocument)
+        {
+            var command = _repository.GetCommandById(id);
+
+            if (command == null)
+            {
+                return NotFound();
+            }
+
+            var commandToPatch = _mapper.Map<CommandUpdateDto>(command);
+            
+            patchDocument.ApplyTo(commandToPatch, ModelState);
+
+            if (!TryValidateModel(commandToPatch))
+            {
+                return ValidationProblem(ModelState);
+            }
+            
+            _mapper.Map(commandToPatch, command);
+            _repository.UpdateCommand(command);
+            _repository.SaveChanges();
+            
+            return NoContent();
+        }
             
     }
 }
