@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Csharp_REST_API.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Csharp_REST_API.Data
 {
@@ -41,6 +42,16 @@ namespace Csharp_REST_API.Data
         public void UpdateCommand(Command cmd)
         {
            // nothing 
+        }
+        public void DeleteCommand(Command cmd)
+        {
+            if (cmd == null)
+            {
+                throw new ArgumentNullException(nameof(cmd));
+            }
+
+            _context.Commands.Remove(cmd);
+
         }
     }
 }
