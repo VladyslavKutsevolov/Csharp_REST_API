@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Csharp_REST_API.Controllers
 {
-    [Route("api/command")]
+    [Route("api/commands")]
     [ApiController]
     public class CommandsController : ControllerBase
     {
@@ -20,7 +20,7 @@ namespace Csharp_REST_API.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<Command>> GetAllCommands()
         {
-            var commandItems = _repository.GetAppCommands();
+            var commandItems = _repository.GetAllCommands();
 
             return Ok(commandItems); 
         }
