@@ -5,7 +5,12 @@ namespace Csharp_REST_API.Data
 {
     public class MockCommanderRepo : ICommanderRepo
     {
-        public IEnumerable<Command> GetAppCommands()
+        public bool SaveChanges()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public IEnumerable<Command> GetAllCommands()
         { 
             var commands = new List<Command>
             {
@@ -20,6 +25,11 @@ namespace Csharp_REST_API.Data
         public Command GetCommandById(int id)
         {
             return new Command{Id = 0, HowTo = "Do something", Line = "something", Platform = "something else"};
+        }
+
+        public void CreateCommand(Command cmd)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
