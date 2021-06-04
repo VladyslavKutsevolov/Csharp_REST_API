@@ -10,5 +10,6 @@ namespace Csharp_REST_API.Data
         Command GetCommandById(int id);
 
         void CreateCommand(Command cmd);
+        void UpdateCommand(Command cmd);
     }
 }
