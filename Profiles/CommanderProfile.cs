@@ -9,6 +9,7 @@ namespace Csharp_REST_API.Profiles
         public CommanderProfile()
         {
             CreateMap<Command, CommandReadDto>();
+            CreateMap<CommandCreateDto, Command>();
         }
     }
 }
