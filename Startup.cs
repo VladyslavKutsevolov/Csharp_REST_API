@@ -38,7 +38,8 @@ namespace Csharp_REST_API
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Csharp_REST_API", Version = "v1" });
             });
-            services.AddScoped<ICommanderRepo, MockCommanderRepo>();
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            services.AddScoped<ICommanderRepo, SqlCommanderRepo>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
